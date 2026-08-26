@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1" />
+<title>제 107회 전국체육경기대회</title>
+<meta name="description" content="제 107회 전국체육경기대회 경기장 간 거리 및 경로안내" />
+
+<link rel="manifest" href="manifest.webmanifest" />
+<meta name="theme-color" content="#105c3d" />
+<link rel="icon" href="icons/icon-192.png" />
+<link rel="apple-touch-icon" href="icons/icon-192.png" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="경기장 길찾기" />
+
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<div class="app">
+
+  <header class="top">
+    <div class="emoji">🏟️</div>
+    <div>
+      <h1>제 107회 전국체육경기대회</h1>
+      <p>경기장 간 거리 및 경로안내</p>
+    </div>
+  </header>
+
+  <div id="installBanner" class="install-banner">
+    <div class="row">
+      <div id="installMsg">홈 화면에 추가하면 앱처럼 바로 실행할 수 있어요.</div>
+    </div>
+    <div class="row" style="margin-top:10px;">
+      <button id="installBtn" style="display:none;">홈 화면에 추가</button>
+      <button class="dismiss" id="installDismiss">닫기</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="field">
+      <label for="fromInput">출발 종목</label>
+      <div class="combo" id="fromCombo">
+        <input id="fromInput" type="text" placeholder="종목명을 검색하세요 (예: 본부)" autocomplete="off" />
+        <button type="button" class="clear-btn" data-target="from">✕</button>
+        <div class="dropdown" id="fromDropdown"></div>
+      </div>
+    </div>
+
+    <div class="swap-row">
+      <button type="button" class="swap-btn" id="swapBtn" title="출발/도착 바꾸기">⇅</button>
+    </div>
+
+    <div class="field">
+      <label for="toInput">도착 종목</label>
+      <div class="combo" id="toCombo">
+        <input id="toInput" type="text" placeholder="종목명을 검색하세요 (예: 검도)" autocomplete="off" />
+        <button type="button" class="clear-btn" data-target="to">✕</button>
+        <div class="dropdown" id="toDropdown"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="resultArea"></div>
+
+  <footer class="meta">경기장 주소·좌표 출처: 제107회 전국체육대회 경기장 주소(좌표) 자료</footer>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js').catch(() => {});
+  });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,287 @@
+:root {
+  --bg: #f4f6f5;
+  --card: #ffffff;
+  --ink: #1c2521;
+  --sub: #5b6b64;
+  --line: #e2e8e4;
+  --brand: #105c3d;
+  --brand-dark: #0b4530;
+  --accent: #ffc400;
+  --warn-bg: #fff8e1;
+  --warn-ink: #8a6d00;
+  --kakao: #FEE500;
+  --kakao-ink: #391b1b;
+  --tmap: #e6480c;
+  --radius: 14px;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Apple SD Gothic Neo",
+    "Malgun Gothic", "Noto Sans KR", sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  min-height: 100vh;
+  padding-bottom: calc(24px + var(--safe-bottom));
+}
+
+.app {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+header.top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 4px 12px;
+}
+
+header.top .emoji { font-size: 32px; line-height: 1; }
+header.top h1 {
+  font-size: 23px;
+  margin: 0;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+}
+header.top p {
+  margin: 3px 0 0;
+  font-size: 15px;
+  color: var(--sub);
+}
+
+.region-tabs {
+  display: flex;
+  gap: 8px;
+  margin: 6px 0 16px;
+}
+.region-tabs button {
+  flex: 1;
+  padding: 10px 0;
+  border-radius: 999px;
+  border: 1.5px solid var(--line);
+  background: var(--card);
+  color: var(--sub);
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+}
+.region-tabs button.active {
+  background: var(--brand);
+  border-color: var(--brand);
+  color: #fff;
+}
+
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-bottom: 14px;
+  box-shadow: 0 1px 2px rgba(20, 30, 25, 0.06);
+  border: 1px solid var(--line);
+}
+
+.field { margin-bottom: 14px; }
+.field:last-child { margin-bottom: 0; }
+.field label {
+  display: block;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--sub);
+  margin-bottom: 6px;
+}
+
+.combo { position: relative; }
+.combo input {
+  width: 100%;
+  padding: 13px 40px 13px 14px;
+  border-radius: 10px;
+  border: 1.5px solid var(--line);
+  font-size: 16.5px;
+  background: #fafcfb;
+  color: var(--ink);
+}
+.combo input:focus {
+  outline: none;
+  border-color: var(--brand);
+  background: #fff;
+}
+.combo .clear-btn {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: transparent;
+  color: var(--sub);
+  font-size: 18px;
+  padding: 6px;
+  cursor: pointer;
+  display: none;
+}
+.combo.has-value .clear-btn { display: block; }
+
+.swap-row {
+  display: flex;
+  justify-content: center;
+  margin: -2px 0 10px;
+}
+.swap-btn {
+  border: 1.5px solid var(--line);
+  background: #fafcfb;
+  border-radius: 999px;
+  width: 38px;
+  height: 38px;
+  font-size: 16px;
+  cursor: pointer;
+  color: var(--brand);
+}
+
+.dropdown {
+  position: absolute;
+  z-index: 20;
+  left: 0; right: 0; top: calc(100% + 6px);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  max-height: 260px;
+  overflow-y: auto;
+  box-shadow: 0 10px 24px rgba(20, 30, 25, 0.14);
+  display: none;
+}
+.dropdown.open { display: block; }
+.dropdown .opt {
+  padding: 12px 14px;
+  font-size: 16px;
+  cursor: pointer;
+  border-bottom: 1px solid #f0f2f0;
+}
+.dropdown .opt:last-child { border-bottom: none; }
+.dropdown .opt:active,
+.dropdown .opt.highlight { background: #f0f7f3; }
+.dropdown .opt .place-name { color: var(--sub); font-size: 13.5px; margin-top: 2px; }
+.dropdown .empty { padding: 14px; color: var(--sub); font-size: 14.5px; text-align: center; }
+
+.notice {
+  background: var(--warn-bg);
+  color: var(--warn-ink);
+  border-radius: 12px;
+  padding: 14px;
+  font-size: 14.5px;
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16.5px;
+  font-weight: 800;
+  margin: 4px 0 10px;
+}
+
+.route-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14.5px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+.route-table th {
+  background: #dfeee6;
+  color: var(--brand-dark);
+  padding: 10px 8px;
+  font-weight: 800;
+  text-align: center;
+}
+.route-table td {
+  padding: 12px 10px;
+  text-align: center;
+  border-top: 1px solid var(--line);
+  vertical-align: top;
+}
+.route-table .place { font-weight: 700; margin-bottom: 3px; }
+.route-table .addr { color: var(--sub); font-size: 13px; line-height: 1.4; }
+
+.distance-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 14px 4px 4px;
+  font-size: 14.5px;
+  color: var(--sub);
+}
+.distance-row strong { color: var(--ink); font-size: 16.5px; }
+
+.btn-stack { display: flex; flex-direction: column; gap: 10px; margin-top: 14px; }
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 15px 0;
+  border-radius: 12px;
+  border: none;
+  font-size: 16.5px;
+  font-weight: 800;
+  cursor: pointer;
+  text-decoration: none;
+}
+.btn .ico { font-size: 18px; }
+.btn-kakao-web { background: #34c759; color: #fff; }
+.btn-kakao-app { background: var(--kakao); color: var(--kakao-ink); }
+.btn-tmap { background: var(--tmap); color: #fff; }
+
+.install-banner {
+  display: none;
+  background: var(--brand);
+  color: #fff;
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  margin-bottom: 14px;
+  font-size: 14.5px;
+  line-height: 1.5;
+}
+.install-banner.show { display: block; }
+.install-banner .row { display: flex; align-items: center; gap: 10px; justify-content: space-between; }
+.install-banner button {
+  background: #fff;
+  color: var(--brand-dark);
+  border: none;
+  border-radius: 8px;
+  padding: 9px 13px;
+  font-weight: 800;
+  font-size: 14px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.install-banner .dismiss {
+  background: transparent;
+  color: #ffffffcc;
+  padding: 9px 6px;
+}
+
+.placeholder {
+  text-align: center;
+  color: var(--sub);
+  font-size: 14.5px;
+  padding: 30px 10px;
+}
+
+footer.meta {
+  text-align: center;
+  color: var(--sub);
+  font-size: 12.5px;
+  padding: 18px 0 4px;
+}
