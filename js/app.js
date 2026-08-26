@@ -192,13 +192,12 @@
     var coordParams = '&reqCoordType=WGS84&resCoordType=WGS84';
     var scheme = 'tmap://route?startx=' + from.lon + '&starty=' + from.lat +
       '&goalx=' + to.lon + '&goaly=' + to.lat + coordParams;
-    var storeIOS = 'https://apps.apple.com/app/id431589174';
-    var androidIntent = 'intent://route?startx=' + from.lon + '&starty=' + from.lat +
-      '&goalx=' + to.lon + '&goaly=' + to.lat + coordParams +
-      '#Intent;scheme=tmap;package=com.skt.tmap.ver2;' +
-      'S.browser_fallback_url=' + encodeURIComponent('https://play.google.com/store/apps/details?id=com.skt.tmap.ver2') +
-      ';end';
-    openWithFallback(scheme, storeIOS, null, androidIntent);
+    // Plain scheme navigation on every platform — matches the previous
+    // (106th) version, which just used <a href="tmap://...">. An Android
+    // intent:// wrapper was tried here but its package name didn't reliably
+    // match the installed app, so it bounced to the Play Store instead of
+    // opening Tmap.
+    window.location.href = scheme;
   }
 
   // ---------- render result ----------
